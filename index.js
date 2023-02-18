@@ -3,21 +3,25 @@ const add = document.querySelector("#add");
 const liste = document.querySelector("#liste");
 const categorie = document.querySelector("#categorie")
 saisie.focus()
-
 add.addEventListener("click", addTodo)
+saisie.required = true;
 
-let rayon = ["Crémerie", "Boucherie", "Poissonerie", "Desserts", "Fruits", "Légumes", "Surgelés", "Boissons", "Boulangerie", "Epicerie salée", "Rayon frais"]
+let rayon = ["Choisir un rayon", "Crémerie", "Boucherie", "Poissonerie", "Desserts", "Fruits", "Légumes", "Surgelés", "Boissons", "Boulangerie", "Epicerie salée", "Rayon frais"]
 
  //CODE QUI CREE LES OPTIONS DANS LE TOUT PREMIER INPUT PRES DE LA BARRE DE SAISIE GRACE A L'ARRAY CI-DESSUS
-rayon.forEach(function addRayon (item) {
-    let option = document.createElement("option")
-    option.text = item;
-    option.value = item;
-    categorie.appendChild(option)
-});
+//rayon.forEach(function addRayon (item) {
+  //  let option = document.createElement("option")
+  //  option.text = item;
+  //  option.value = item;
+  //  categorie.appendChild(option)
+//});
 
 function addTodo(event){
+    saisie.required = true;
+   
+
     event.preventDefault();
+    event.stopPropagation();
     console.log("Hello")
     const todoDiv = document.createElement("div");
   
@@ -31,21 +35,20 @@ function addTodo(event){
         todoDiv.appendChild(editArea);
 
     // CODE QUI CREE LES INPUT DANS LA LISTE GRACE AU PREMIER ARRAY
-    const selectArea = document.createElement("select")
-        rayon.forEach(function addRayon (item) {
-            let option = document.createElement("option")
-            option.text = item;
-            option.value = item;
-            selectArea.appendChild(option)
-            selectArea.disabled = true
-        });
-        todoDiv.appendChild(selectArea)
+            const selectArea = document.createElement("select")
+                rayon.forEach(function addRayon (item) {
+                       let option = document.createElement("option")
+                    option.text = item;
+                    option.value = item;
+                    selectArea.appendChild(option)
+                       selectArea.disabled = false;
+                       selectArea.id = "choose"
+                });
+                todoDiv.appendChild(selectArea)
+
 
         
-            
-                //let category = categorie;
-                //category.disabled = true
-            //todoDiv.appendChild(category)
+                
         
             
                  
@@ -82,7 +85,7 @@ function addTodo(event){
         if(editArea.disabled === true){
         editArea.disabled = false;
         //category.disabled = false
-        selectArea.disabled = false;
+        ;
         
         editArea.focus();
         editButton.id = "save";
@@ -97,7 +100,7 @@ function addTodo(event){
                 editButton.innerText = "Modifier"
                 editArea.disabled = true
                 //category.disabled = true
-                selectArea.disabled = true
+                
                 }
 
             });

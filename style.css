@@ -95,6 +95,18 @@ h1, #allImput
     border-radius: 5px;
 }
 
+#choose
+{
+    background-color: rgb(164, 188, 164);
+    border: none;
+    border-radius: 5px;
+    border: outset;
+}
+
+#choose:disabled
+{
+    opacity: 100%;
+}
 
 
 #change, #delete, #save
