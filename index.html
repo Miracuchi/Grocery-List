@@ -4,36 +4,26 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>For later</title>
+    <title>Grocery List</title>
     <link href="style.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <script src="index.js" defer></script>
 </head>
-<body>
-   
-    <h1>Liste de course</h1>
-    <form id="allImput">
-        <input type="text" name="liste" id="saisie" size="100" placeholder="Veuillez entrer un article" required>
-        <input type="submit" name="add" id="add" value="Ajouter">
-        <!--<select name="product" id="categorie" value="option">
-           <!--<option>Choisir une catégorie</option>-->
-            <!--<option>Crémerie</option>-->
-            <!--<option>Boucherie</option>-->
-            <!--<option>Poissonerie</option>-->
-            <!--<option>Desserts</option>-->
-            <!--<option>Fruits</option>-->
-            <!--<option>Légumes</option>-->
-            <!--<option>Surgelés</option>-->
-            <!--<option>Boissons</option>-->
-            <!--<option>Boulangerie</option>-->
-            <!--<option>Epicerie salée</option>-->
-            <!--<option>Rayon Frais</option>-->
-            
-        
-    </form>
-
+<body id="hue">
+    <div id="banniere">
+        <h1>Grocery List</h1>
+        <form id="allImput">
+        <select name="product" id="categorie" >
+        <input type="text" name="liste" id="saisie" size="100" placeholder="Veuillez entrer un article"  required>
+        <button type="submit" name="add" id="add" value="Ajouter" ><i class="fa-solid fa-circle-plus" id="plusButton"></i></button>   
+        </form>
+    </div>
     <form id="liste">
 
     </form>
-    
+ 
+    <footer>
+        <button type="button" id="up"><i class="fa-solid fa-circle-arrow-up"></i></button>
+    </footer>
 </body>
 </html>

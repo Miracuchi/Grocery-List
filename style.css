@@ -1,65 +1,136 @@
 body
-{
-    background-color: #4c7b78;
+{   
+    background-size: cover;
+    
+    min-height: 100vh;
+    background-color: rgb(23,22,35);
+    background-repeat: no-repeat;
     
 }
 
+#banniere
+{
+    background-image: url('Ressources/triangles.png');
+    background-repeat: no-repeat;
+    background-position: center;
+    padding-bottom: 100px;
+    background-size: 100%;
+    margin-left: -10px;
+    margin-right: -10px;
+    padding-top: 3px;
+    
+    animation-name: banner;
+    animation-duration: 5s;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+
+    
+}
+
+@keyframes banner
+{
+    0%
+    {
+        filter: hue-rotate(0deg);
+    }
+
+    100%
+    {
+        filter: hue-rotate(360deg);
+    }
+}
+
+
 h1
 {
-    background-color: orange;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: lighter;
+    letter-spacing: 15px;
+    text-transform: uppercase;
+    padding-top: 20px;
+    color: azure;
+    
 }
 
 h1, #allImput
 {
    text-align: center;
+   
 }
+
+
 
 #saisie
 {   
-    opacity: 30%;
-    background-color: rgb(236, 230, 219);
+    z-index: 100;
+    opacity: 100%;
+    background-color: rgb(37,39,62);
     margin-top: 60px;
-    height: 30px;
-    border-radius: 20px;
+    height: 48px;
+    width: 22.9%;
+ 
     border: none;
+    color : wheat;
     margin-left: auto;
     margin-right: auto;
     transition: all 0.3s ease-in;
+    font-family: Arial, Helvetica, sans-serif;
+    
 }
+
+
 
 #saisie:focus
 {
+    
     opacity: 100%;
-    background-color: rgb(236, 230, 219);
+    background-color: rgb(37,39,62);
     margin-top: 60px;
-    height: 30px;
-    border-radius: 20px;
+    height: 48px;
+    
     border: none;
     border-bottom-width: 10px;
     outline: none;
     border-bottom-color: rebeccapurple;
-    transition: all 1.0s ease
+    transition: all 1.0s ease;
+    box-shadow: 0 0 0 0 black;
+    animation: pulse 1.3s infinite;
+}
+
+@keyframes pulse
+{
+    to 
+    {
+        box-shadow: 0 0 0 18px rgba(0, 0, 0, 0.01);
+    }
 }
 
 
 #add
 {
-    background-color: rgb(164, 188, 164);
+    background-color: transparent;
+    border: none;
+    font-size: 2rem;
+    padding-top: 15px;
+    color: rgb(130,132,167);
     
-    color: rgb(7, 7, 7);
-    border: outset;
-    border-radius: 20px;
-    font-weight: bold;
-    width: 100px;
-    height: 23px;
-    margin-top: 5px;
    
 }
 
-#add:active
+#plusButton
 {
-    background-color: blue;
+    position: relative;
+        top: 7.25px;
+        left: -45px;
+}
+
+
+
+#plusButton:active
+{
+    
     filter: opacity(60%);
+    border-radius: 20px;
     color: rgb(255, 255, 255, 1);
 }
 
@@ -69,57 +140,94 @@ h1, #allImput
 {
     text-align: center;
     margin-top: 200px;
-    border: solid;
+    position: relative;
+        top: -250px;
     max-width: 100%;
+    max-height: 100%;
     margin-left: 200px;
     margin-right: 200px;
-    border-color: aqua;
     border-radius: 10px;
-    border-bottom: none;
-    border-left: none;
-    border-right: none;
-    
+    margin-bottom: 0%;
+    padding-bottom: 30px;
+    padding-top: 20px;
     
 }
 
 #edit
 {
-    background-color: whitesmoke;
-    border: none;
-    color: black;
-    font-weight: bold;
-    min-width: 60%;
-    height: 21px;
-    margin-top: 10px;
-    border-color: navy;
-    border-radius: 5px;
+    background-color: rgb(37,37,60);
+    
+    color: wheat;
+    font-family: Arial, Helvetica, sans-serif;
+    min-width: 30%;
+    height: 48px;
+    margin-bottom: -2px;
+    border-bottom-width: 1px;
+    border-bottom-color: rgb(68, 68, 68);
+    border-top: none;
+    border-left: none;
+    border-right: none;
 }
 
-#choose
+
+
+#animate
 {
-    background-color: rgb(164, 188, 164);
-    border: none;
-    border-radius: 5px;
-    border: outset;
+    animation: apparition 0.8s ease-out;
+    
 }
 
-#choose:disabled
+
+@keyframes apparition
 {
-    opacity: 100%;
+    from
+    {
+        opacity: 0;
+        transform: translateY(-100px);
+    }
+
+    to 
+    {
+        opacity: 1;
+        transform: translateY(0px);
+    }
 }
+
+
+#edit:focus
+{
+    box-shadow: 0 0 0 0 rgb(0, 0, 0);
+    animation: pulse 1.3s infinite;
+    
+}
+
+#categorie
+{
+    background-color: rgb(37,39,62);
+    border: none;
+    color: wheat;
+    
+    height: 50px;
+    animation: none;
+
+}
+
+
 
 
 #change, #delete, #save
 {
-    background-color: rgb(164, 188, 164);
-    background-repeat: no-repeat;
-    color: rgb(0, 0, 0);
-    font-weight: bold;
-    margin-left: 5px;
-    border: outset;
-    border-radius: 20px
-    
+    font-size: 1rem;
+    border-radius: 40px;
+    position: relative;
+        left: -105px;
+        top: 1px;
+    border: none;
+    background-color: rgb(130,132,167);
+    color: rgb(37,39,62);
+   
 }
+
 
 
 #change:active
@@ -133,11 +241,39 @@ h1, #allImput
     background-color: green;
     filter: opacity(60%);
 }
+
 #delete:active
 {
     background-color: red;
     filter: opacity(60%);    
 }
 
+#choose
+{
+    background-color: rgb(37,39,62);
+    height: 51.3px;
+    color: wheat;
+    border-bottom-width: 1px;
+    border-bottom-color: rgb(68, 68, 68);
+    border-top: none;
+    border-left: none;
+    border-right: none;
+}
 
+#choose:disabled
+{
+    opacity: 1;
+}
 
+#up
+{
+    font-size: 5rem;
+    background-color: transparent;
+    border: none;
+    color: blueviolet;
+    align-items: flex-end;
+    position: fixed;
+        bottom: 10px;
+        right: 10px;
+    
+}
