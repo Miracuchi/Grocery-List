@@ -3,11 +3,17 @@ const add = document.querySelector("#add");
 const liste = document.querySelector("#liste");
 const categorie = document.querySelector("#categorie")
 const upButton = document.querySelector("#up")
-saisie.focus()
-add.addEventListener("click", addTodo)
+saisie.focus();
+
+
+
+
 saisie.required = true;
 
+
 const rayon = ["⏬", "🥛", "🥩", "🧊", "🍃", "😽", "🍾", "🥖", "🍝", "🧀", "🧽", "👶", "💄", "🩹", "📱"]
+
+
 
 function upside(upButton){
     window.scrollTo({
@@ -34,48 +40,88 @@ addRayon(categorie)
 // créer et ajoute des inputs à un element html donné
 // créer et ajoute des buttons à un élement html donné
 
+
+
 function createGroceryItem(balise) {
-    const editArea = document.createElement("input");
-        editArea.id = "edit"
-        editArea.value = saisie.value;
-        editArea.disabled = true;
-        balise.appendChild(editArea);
-    const selectArea = document.createElement("select")
-        addRayon(selectArea)
-               selectArea.disabled = true;
-               selectArea.id = "choose";
-               selectArea.value = categorie.value;
-               
-        balise.appendChild(selectArea)
 
-        const editButton = document.createElement("button");
-        editButton.innerHTML = '<i class="fa-solid fa-pen-to-square"></i>';
-        editButton.id = "change";
-        editButton.addEventListener("click", function(e){
-            edition(e, editArea, editButton, selectArea)
-        })
+    
+    
 
-        
+
+    let txt = saisie.value
+        if(txt === ""){
+            alert("Veuillez rentrer un article !")
+        } else { 
+            
+           
+            
+            const editArea = document.createElement("input");
+                editArea.id = "edit";
+                editArea.type = "text"
+                editArea.value = saisie.value;
+                editArea.disabled = true;
+                balise.appendChild(editArea);
+            const selectArea = document.createElement("select")
+                addRayon(selectArea)
+                    selectArea.disabled = true;
+                    selectArea.id = "choose";
+                    selectArea.value = categorie.value;
                 
-    balise.appendChild(editButton);
-    
-    // Partie delete
-    const deleteButton = document.createElement("button")
-        deleteButton.innerHTML = '<i class="fa-solid fa-trash"></i>';
-        deleteButton.id = "delete";
-        deleteButton.addEventListener("click", function(e){
-            e.preventDefault();
-            deleteButton.parentElement.remove();
-        })
-    
-       
-        
-    balise.appendChild(deleteButton);
+                balise.appendChild(selectArea)
+
+                const editButton = document.createElement("button");
+                editButton.innerHTML = '<i class="fa-solid fa-pen-to-square"></i>';
+                editButton.id = "change";
+                editButton.addEventListener("click", function(e){
+                    edition(e, editArea, editButton, selectArea)
+                })
+
+                
+                        
+            balise.appendChild(editButton);
+            
+            // Partie delete
+            const deleteButton = document.createElement("button")
+                deleteButton.innerHTML = '<i class="fa-solid fa-trash"></i>';
+                deleteButton.id = "delete";
+                deleteButton.addEventListener("click", function(e){
+                    e.preventDefault();
+                    deleteButton.parentElement.remove();
+                    
+                })
+                const name = editArea.value;
+                const category = selectArea.value;
+                const editing = editButton;
+                const deleting = deleteButton;
+                const itemList = {
+                    name,
+                    category,
+                    editing,
+                    deleting
+                };
+                
+                //const listo = liste.innerHTML;
+                
+                //const itemList = {listo}
+
+                const list = []
+                list.push(itemList)
+                localStorage.setItem("list", JSON.stringify(list))
+                // CAS OU LA LISTE CONTIENT DEJA UN ITEM
+                const currentList = localStorage.getItem("list")
+                newItem.push(currentList)
+                
+            balise.appendChild(deleteButton);}
+
+           
 
 }
 
 
-function edition(e, editArea, editButton, selectArea, deleteButton){
+
+
+
+function edition(e, editArea, editButton, selectArea){
     e.preventDefault();
    
     
@@ -100,14 +146,13 @@ function edition(e, editArea, editButton, selectArea, deleteButton){
 
 function addTodo(event){
     saisie.required = true;
-   
+
 
     event.preventDefault();
     event.stopPropagation();
     console.log("Hello")
     const todoDiv = document.createElement("div");
     todoDiv.id = "animate";
-    
     
     createGroceryItem(todoDiv);
     saisie.focus()
@@ -117,24 +162,17 @@ function addTodo(event){
 
     // CODE QUI CREE LES INPUT DANS LA LISTE GRACE AU PREMIER ARRAY
             
-
     
-
+    
    
 
 }
+add.addEventListener("click", addTodo)
     
  //partie edit
 
- 
-
- 
-
-            
-
-        
+//add.addEventListener("click", function storage(e){
     
-
-
-
-    
+    //e.preventDefault();
+    //e.stopPropagation();
+//})
