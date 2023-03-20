@@ -41,6 +41,8 @@ body
 }
 
 
+
+
 h1
 {
     font-family: Arial, Helvetica, sans-serif;
@@ -58,6 +60,11 @@ h1, #allImput
    
 }
 
+#rayon
+{
+    animation-name: none;
+
+}
 
 
 #saisie
@@ -142,18 +149,20 @@ h1, #allImput
     margin-top: 200px;
     position: relative;
         top: -250px;
-    max-width: 100%;
+    min-width: 60%;
     max-height: 100%;
-    margin-left: 200px;
-    margin-right: 200px;
+    margin-left: auto;
+    margin-right: auto;
     border-radius: 10px;
     margin-bottom: 0%;
     padding-bottom: 30px;
     padding-top: 20px;
     
+   
+    
 }
 
-#edit
+.edit
 {
     background-color: rgb(37,37,60);
     
@@ -170,8 +179,7 @@ h1, #allImput
 }
 
 
-
-#animate
+.animate
 {
     animation: apparition 0.8s ease-out;
     
@@ -194,7 +202,7 @@ h1, #allImput
 }
 
 
-#edit:focus
+.edit:focus
 {
     box-shadow: 0 0 0 0 rgb(0, 0, 0);
     animation: pulse 1.3s infinite;
@@ -215,12 +223,12 @@ h1, #allImput
 
 
 
-#change, #delete, #save
+.change, .delete, .save
 {
     font-size: 1rem;
     border-radius: 40px;
     position: relative;
-        left: -105px;
+        left: -60px;
         top: 1px;
     border: none;
     background-color: rgb(130,132,167);
@@ -230,25 +238,25 @@ h1, #allImput
 
 
 
-#change:active
+.change:active
 {
     background-color: rgb(141, 141, 82);
     filter: opacity(60%);
 }
 
-#save:active
+.save:active
 {
     background-color: green;
     filter: opacity(60%);
 }
 
-#delete:active
+.delete:active
 {
     background-color: red;
     filter: opacity(60%);    
 }
 
-#choose
+.choose
 {
     background-color: rgb(37,39,62);
     height: 51.3px;
@@ -260,14 +268,15 @@ h1, #allImput
     border-right: none;
 }
 
-#choose:disabled
+
+.choose:disabled
 {
     opacity: 1;
 }
 
 #up
 {
-    font-size: 5rem;
+    font-size: 3rem;
     background-color: transparent;
     border: none;
     color: blueviolet;
@@ -277,3 +286,100 @@ h1, #allImput
         right: 10px;
     
 }
+
+
+/*@media screen and (min-width:320px ) and (max-width:900px) {
+   width : 324px to 480px portrait 
+
+    #banniere
+    {
+        min-width: 100%;
+        padding-right: 0px;
+        
+        margin-top: -110px;
+    }
+    
+    #add
+    {
+        position: absolute;
+        top : 200px;
+    }
+
+    h1
+    {
+        margin-top: 100px;
+        margin-left: 10px;
+        font-size: 17px;
+    }
+
+    #saisie
+    {
+        min-width: 60%;
+        
+    }
+
+    .edit
+    {
+        width: 98%;
+        
+        
+    }
+    
+
+    #wrapper
+    {
+        width: 100%;
+    }
+
+    .edit
+{
+    background-color: rgb(37,37,60);
+    margin-right: -77px;
+    margin-left: -43.5px;
+    color: wheat;
+    font-family: Arial, Helvetica, sans-serif;
+    min-width: 30%;
+    height: 48px;
+    margin-bottom: -2px;
+    border-bottom-width: 1px;
+    border-bottom-color: rgb(68, 68, 68);
+    border-top: none;
+    border-left: none;
+    border-right: none;
+}
+.change, .delete, .save
+{
+    font-size: 1rem;
+    border-radius: 40px;
+    position: relative;
+        left : 0px;
+        top: 1px;
+    border: none;
+    background-color: rgb(130,132,167);
+    color: rgb(37,39,62);
+   
+}
+.choose
+{
+    background-color: rgb(37,39,62);
+    height: 51.3px;
+    color: wheat;
+    margin-right: -100px;
+    margin-left: 50px;
+    border-bottom-width: 1px;
+    border-bottom-color: rgb(68, 68, 68);
+    border-top: none;
+    border-left: none;
+    border-right: none;
+}
+
+  
+ 
+
+  
+  
+}*/
+
+
+
+

@@ -4,16 +4,13 @@ const liste = document.querySelector("#liste");
 const categorie = document.querySelector("#categorie")
 const upButton = document.querySelector("#up")
 saisie.focus();
-
-
-
-
 saisie.required = true;
 
 
 const rayon = ["⏬", "🥛", "🥩", "🧊", "🍃", "😽", "🍾", "🥖", "🍝", "🧀", "🧽", "👶", "💄", "🩹", "📱"]
 
 
+// ON ITERE CHAQUE ITEM DE LA LIST POUR CREER UN ELEMENT HTML A CHAQUE FOIS
 
 function upside(upButton){
     window.scrollTo({
@@ -42,80 +39,27 @@ addRayon(categorie)
 
 
 
-function createGroceryItem(balise) {
-
-    
-    
-
+function createGroceryItem() {
 
     let txt = saisie.value
         if(txt === ""){
             alert("Veuillez rentrer un article !")
-        } else { 
+        } else {
             
-           
+            const title = saisie.value;
+            const rayon = categorie.value;
+            const newItem = {
+                title,
+                rayon
+            };
+            saveItem(newItem);
+            renderAnItem(newItem);
+            saisie.focus();
+            saisie.value = "";
             
-            const editArea = document.createElement("input");
-                editArea.id = "edit";
-                editArea.type = "text"
-                editArea.value = saisie.value;
-                editArea.disabled = true;
-                balise.appendChild(editArea);
-            const selectArea = document.createElement("select")
-                addRayon(selectArea)
-                    selectArea.disabled = true;
-                    selectArea.id = "choose";
-                    selectArea.value = categorie.value;
-                
-                balise.appendChild(selectArea)
-
-                const editButton = document.createElement("button");
-                editButton.innerHTML = '<i class="fa-solid fa-pen-to-square"></i>';
-                editButton.id = "change";
-                editButton.addEventListener("click", function(e){
-                    edition(e, editArea, editButton, selectArea)
-                })
-
-                
-                        
-            balise.appendChild(editButton);
-            
-            // Partie delete
-            const deleteButton = document.createElement("button")
-                deleteButton.innerHTML = '<i class="fa-solid fa-trash"></i>';
-                deleteButton.id = "delete";
-                deleteButton.addEventListener("click", function(e){
-                    e.preventDefault();
-                    deleteButton.parentElement.remove();
-                    
-                })
-                const name = editArea.value;
-                const category = selectArea.value;
-                const editing = editButton;
-                const deleting = deleteButton;
-                const itemList = {
-                    name,
-                    category,
-                    editing,
-                    deleting
-                };
-                
-                //const listo = liste.innerHTML;
-                
-                //const itemList = {listo}
-
-                const list = []
-                list.push(itemList)
-                localStorage.setItem("list", JSON.stringify(list))
-                // CAS OU LA LISTE CONTIENT DEJA UN ITEM
-                const currentList = localStorage.getItem("list")
-                newItem.push(currentList)
-                
-            balise.appendChild(deleteButton);}
-
-           
-
+        }
 }
+
 
 
 
@@ -123,20 +67,19 @@ function createGroceryItem(balise) {
 
 function edition(e, editArea, editButton, selectArea){
     e.preventDefault();
-   
-    
+
     // Passage en mode édition
     if(editArea.disabled === true){
         editArea.disabled = false;
         
         editArea.focus();
-        editButton.id = "save";
+        editButton.className = "save";
         editButton.innerHTML = '<i class="fa-solid fa-check-double"></i>';
         selectArea.disabled = false;
         
     } else {
             // passage en mode readonly
-        editButton.id = "change";
+        editButton.className = "change";
         editArea.value = editArea.value;
         editButton.innerHTML = '<i class="fa-solid fa-pen-to-square"></i>';
         editArea.disabled = true;
@@ -144,35 +87,88 @@ function edition(e, editArea, editButton, selectArea){
     }};
 
 
-function addTodo(event){
-    saisie.required = true;
 
-
-    event.preventDefault();
-    event.stopPropagation();
-    console.log("Hello")
-    const todoDiv = document.createElement("div");
-    todoDiv.id = "animate";
-    
-    createGroceryItem(todoDiv);
-    saisie.focus()
-   
-    liste.appendChild(todoDiv);
-    saisie.value = "";
-
-    // CODE QUI CREE LES INPUT DANS LA LISTE GRACE AU PREMIER ARRAY
-            
-    
-    
-   
-
+let groceryList = []
+const LIST_KEY = "grocery_list";
+if (localStorage.getItem(LIST_KEY) !== null){
+    // LA LISTE EXISTE
+    groceryList = JSON.parse(localStorage.getItem(LIST_KEY));
 }
-add.addEventListener("click", addTodo)
-    
- //partie edit
 
-//add.addEventListener("click", function storage(e){
+// AJOUT D'ITEM
+let saveItem = (item) => {
+    groceryList.push(item)
+    localStorage.setItem(LIST_KEY, JSON.stringify(groceryList));
+}
+
+// SUPPRESSION D'UN ITEM
+const deleteItem = (item) =>{
     
-    //e.preventDefault();
-    //e.stopPropagation();
-//})
+    const index = groceryList.findIndex(function(itemToDelete){
+        return itemToDelete.title === item.title;
+    });
+    groceryList.splice(index, 1);
+    localStorage.setItem(LIST_KEY, JSON.stringify(groceryList))
+}
+
+const renderAnItem = (itemRetrieve) => {
+    const storage = document.createElement("div")
+    storage.className = "animate";
+
+    const rayonSelect = document.createElement("select");
+    addRayon(rayonSelect);
+    rayonSelect.disabled = true;
+    rayonSelect.className = "choose";
+    rayonSelect.value = itemRetrieve.rayon;
+    
+    const editArea2 = document.createElement('input');
+    editArea2.value = itemRetrieve.title;
+    editArea2.className = "edit";
+    editArea2.disabled = true;
+
+    
+
+    const editButton2 = document.createElement("button");
+    editButton2.innerHTML = '<i class="fa-solid fa-pen-to-square"></i>';
+    editButton2.className = "change";
+    editButton2.addEventListener("click", function(e){
+        edition(e, editArea2, editButton2, rayonSelect)
+    })
+    
+
+    const deleteButton2 = document.createElement("button")
+    deleteButton2.innerHTML = '<i class="fa-solid fa-trash"></i>';
+    deleteButton2.className = "delete";
+    deleteButton2.addEventListener("click", function(e){
+        e.preventDefault();
+        deleteButton2.parentElement.remove();
+        deleteItem(itemRetrieve);
+                    
+                })
+    
+    storage.appendChild(rayonSelect);
+    storage.appendChild(editArea2);
+    storage.appendChild(editButton2);
+    storage.appendChild(deleteButton2)
+    
+    liste.appendChild(storage);
+}
+groceryList.forEach((itemRetrieve) => {
+    renderAnItem(itemRetrieve)
+})
+
+
+
+
+
+
+add.addEventListener("click", createGroceryItem);
+saisie.addEventListener("keypress", function(event){
+    if (event.key === "Enter"){
+        createGroceryItem();
+        event.preventDefault();
+    }
+})
+
+
+
