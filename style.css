@@ -1,11 +1,9 @@
 body
 {   
     background-size: cover;
-    
     min-height: 100vh;
     background-color: rgb(23,22,35);
     background-repeat: no-repeat;
-    
 }
 
 #banniere
@@ -23,8 +21,6 @@ body
     animation-duration: 5s;
     animation-iteration-count: infinite;
     animation-timing-function: linear;
-
-    
 }
 
 @keyframes banner
@@ -40,9 +36,6 @@ body
     }
 }
 
-
-
-
 h1
 {
     font-family: Arial, Helvetica, sans-serif;
@@ -51,21 +44,12 @@ h1
     text-transform: uppercase;
     padding-top: 20px;
     color: azure;
-    
 }
 
 h1, #allImput
 {
    text-align: center;
-   
 }
-
-#rayon
-{
-    animation-name: none;
-
-}
-
 
 #saisie
 {   
@@ -75,26 +59,20 @@ h1, #allImput
     margin-top: 60px;
     height: 48px;
     width: 22.9%;
- 
     border: none;
     color : wheat;
     margin-left: auto;
     margin-right: auto;
     transition: all 0.3s ease-in;
-    font-family: Arial, Helvetica, sans-serif;
-    
+    font-family: Arial, Helvetica, sans-serif; 
 }
-
-
 
 #saisie:focus
 {
-    
     opacity: 100%;
     background-color: rgb(37,39,62);
     margin-top: 60px;
     height: 48px;
-    
     border: none;
     border-bottom-width: 10px;
     outline: none;
@@ -112,7 +90,6 @@ h1, #allImput
     }
 }
 
-
 #add
 {
     background-color: transparent;
@@ -120,8 +97,6 @@ h1, #allImput
     font-size: 2rem;
     padding-top: 15px;
     color: rgb(130,132,167);
-    
-   
 }
 
 #plusButton
@@ -131,17 +106,12 @@ h1, #allImput
         left: -45px;
 }
 
-
-
 #plusButton:active
 {
-    
     filter: opacity(60%);
     border-radius: 20px;
     color: rgb(255, 255, 255, 1);
 }
-
-
 
 #liste
 {
@@ -156,16 +126,12 @@ h1, #allImput
     border-radius: 10px;
     margin-bottom: 0%;
     padding-bottom: 30px;
-    padding-top: 20px;
-    
-   
-    
+    padding-top: 20px; 
 }
 
 .edit
 {
     background-color: rgb(37,37,60);
-    
     color: wheat;
     font-family: Arial, Helvetica, sans-serif;
     min-width: 30%;
@@ -178,13 +144,10 @@ h1, #allImput
     border-right: none;
 }
 
-
 .animate
 {
-    animation: apparition 0.8s ease-out;
-    
+    animation: apparition 0.8s ease-out; 
 }
-
 
 @keyframes apparition
 {
@@ -201,12 +164,10 @@ h1, #allImput
     }
 }
 
-
 .edit:focus
 {
     box-shadow: 0 0 0 0 rgb(0, 0, 0);
     animation: pulse 1.3s infinite;
-    
 }
 
 #categorie
@@ -214,14 +175,9 @@ h1, #allImput
     background-color: rgb(37,39,62);
     border: none;
     color: wheat;
-    
     height: 50px;
     animation: none;
-
 }
-
-
-
 
 .change, .delete, .save
 {
@@ -233,10 +189,7 @@ h1, #allImput
     border: none;
     background-color: rgb(130,132,167);
     color: rgb(37,39,62);
-   
 }
-
-
 
 .change:active
 {
@@ -284,18 +237,16 @@ h1, #allImput
     position: fixed;
         bottom: 10px;
         right: 10px;
-    
 }
 
 
-/*@media screen and (min-width:320px ) and (max-width:900px) {
-   width : 324px to 480px portrait 
+@media screen and (min-width:320px ) and (max-width:900px) {
+   /*width : 324px to 480px portrait */
 
     #banniere
     {
         min-width: 100%;
         padding-right: 0px;
-        
         margin-top: -110px;
     }
     
@@ -315,10 +266,9 @@ h1, #allImput
     #saisie
     {
         min-width: 60%;
-        
     }
 
-    .edit
+    /*.edit
     {
         width: 98%;
         
@@ -383,3 +333,4 @@ h1, #allImput
 
 
 
+}

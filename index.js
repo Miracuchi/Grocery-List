@@ -34,18 +34,12 @@ function addRayon (cible) {
 // Ajout des options au select #category de la main navbar
 addRayon(categorie)
 
-// créer et ajoute des inputs à un element html donné
-// créer et ajoute des buttons à un élement html donné
-
-
-
 function createGroceryItem() {
 
     let txt = saisie.value
         if(txt === ""){
             alert("Veuillez rentrer un article !")
         } else {
-            
             const title = saisie.value;
             const rayon = categorie.value;
             const newItem = {
@@ -60,11 +54,6 @@ function createGroceryItem() {
         }
 }
 
-
-
-
-
-
 function edition(e, editArea, editButton, selectArea){
     e.preventDefault();
 
@@ -78,15 +67,13 @@ function edition(e, editArea, editButton, selectArea){
         selectArea.disabled = false;
         
     } else {
-            // passage en mode readonly
+            // repassage en mode readonly
         editButton.className = "change";
         editArea.value = editArea.value;
         editButton.innerHTML = '<i class="fa-solid fa-pen-to-square"></i>';
         editArea.disabled = true;
         selectArea.disabled = true;
     }};
-
-
 
 let groceryList = []
 const LIST_KEY = "grocery_list";
@@ -111,6 +98,7 @@ const deleteItem = (item) =>{
     localStorage.setItem(LIST_KEY, JSON.stringify(groceryList))
 }
 
+// AFFICHAGE DES ITEMS SUR LA PAGE
 const renderAnItem = (itemRetrieve) => {
     const storage = document.createElement("div")
     storage.className = "animate";
@@ -126,8 +114,6 @@ const renderAnItem = (itemRetrieve) => {
     editArea2.className = "edit";
     editArea2.disabled = true;
 
-    
-
     const editButton2 = document.createElement("button");
     editButton2.innerHTML = '<i class="fa-solid fa-pen-to-square"></i>';
     editButton2.className = "change";
@@ -135,7 +121,6 @@ const renderAnItem = (itemRetrieve) => {
         edition(e, editArea2, editButton2, rayonSelect)
     })
     
-
     const deleteButton2 = document.createElement("button")
     deleteButton2.innerHTML = '<i class="fa-solid fa-trash"></i>';
     deleteButton2.className = "delete";
@@ -156,11 +141,6 @@ const renderAnItem = (itemRetrieve) => {
 groceryList.forEach((itemRetrieve) => {
     renderAnItem(itemRetrieve)
 })
-
-
-
-
-
 
 add.addEventListener("click", createGroceryItem);
 saisie.addEventListener("keypress", function(event){
