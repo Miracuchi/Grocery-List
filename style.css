@@ -189,6 +189,7 @@ h1, #allImput
     border: none;
     background-color: rgb(130,132,167);
     color: rgb(37,39,62);
+    margin-right: 4px;
 }
 
 .change:active

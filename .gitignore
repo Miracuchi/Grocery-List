@@ -1,1 +1,23 @@
-.code-workspace
+# Node.js files
+node_modules/
+
+# Compiled files
+dist/
+build/
+
+# Logs and databases
+*.log
+*.sqlite
+
+# Environment variables
+.env
+
+# Visual Studio Code files
+.vscode/
+*.code-workspace
+
+# macOS files
+.DS_Store
+
+# Windows files
+Thumbs.db
