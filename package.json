@@ -1,0 +1,25 @@
+{
+  "name": "todo",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Miracuchi/Todo.git"
+  },
+  "author": "Dylan Dorvilma",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Miracuchi/Todo/issues"
+  },
+  "homepage": "https://github.com/Miracuchi/Todo#readme",
+  "devDependencies": {
+    "eslint": "^8.36.0",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-plugin-import": "^2.27.5"
+  }
+}
